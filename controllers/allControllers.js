@@ -9,6 +9,7 @@ export const registerController = async (req, res)=>{
     try{
         userData = await User.find({email:email})    
     }catch(err){
+        
         console.log("mongoDB err", err)
     }
 
@@ -24,12 +25,14 @@ export const registerController = async (req, res)=>{
         mobileNumber
     })
 
-    try{
+    try
+    { 
         await user.save()
-    }catch(err){
+    }
+    catch(err){
+        
         console.log(err)
     }
-    
 
     return res.status(200).json({message :"Data saved successfully"})
 
@@ -54,8 +57,7 @@ export const loginController = async (req, res)=>{
     if (!isPasswordCorrect) {
       return res.status(400).json({ message: "Incorrect Password" });
     }     
-
-    
+ 
     return res.status(200).json({message :"login successfully"})
 
 }
@@ -64,6 +66,5 @@ export const updateController = async(req, res) =>{
     // const {name, email} = req.body
     
     const {id} = req.params
-    
 
 }
